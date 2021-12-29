@@ -10,7 +10,7 @@ UserCtrl.crearUsuario = async (req, res) => {
 
     await NuevoUsuario.save()
     res.json({
-        mensaje: 'Datos del jugador almacenados con éxito',
+        mensaje: 'Se almacenaron los datos del jugador con éxito',
         nombre: NuevoUsuario.nombre,
         puntaje: NuevoUsuario.puntaje,
     })

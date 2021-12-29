@@ -17,11 +17,14 @@ var questionSchema = new schema({
     respuesta4:{
         type: String,
     },
-    nivel:{
+    categoria:{
         type: Number,
     },
     correcta:{
         type: Number,
+    },
+    premio:{
+        type: Number
     }
 
 },{

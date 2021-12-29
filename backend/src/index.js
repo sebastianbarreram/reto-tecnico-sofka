@@ -3,12 +3,9 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 
-const app = express()
-
-
 require('./database')
 
-//Se llama a morgan como desarrollador
+const app = express()
 app.use(morgan('dev'))
 
 app.use(express.json()); 
@@ -16,14 +13,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({ origen: '*' }))
 
-
 //Rutas
 app.use('/user', require('./routes/User.route'))
-// app.use('/book', require('./routes/Book.route'))
-
+/app.use('/question', require('./routes/Question.route'))
 
 //Puerto
-
 app.set('puerto', process.env.PORT || 4000); 
 app.listen(app.get('puerto'), function () { 
     console.log('Example app listening on port'+ app.get('puerto')); 
