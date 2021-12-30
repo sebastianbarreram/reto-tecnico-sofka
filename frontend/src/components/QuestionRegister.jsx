@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
+
 
 export default function QuestionRegister() {
 
@@ -16,16 +18,17 @@ export default function QuestionRegister() {
 
     useEffect(() => {
         obtenerCantidadPreguntas()
-    }, [])
+    }, []);
+
 
     const obtenerCantidadPreguntas = async () => {
         var a = []
         for (var i = 1; i <= 5; i++) {
             const respuesta = await Axios.get('/question/preguntasPorCategoria/' + i)
-            console.log(respuesta.data.length)
+            // console.log(respuesta.data.length)
             a.push((respuesta.data))
         }
-        console.log(a)
+        // console.log(a)
         setPreguntasPorCategoria(a)
     }
 
@@ -43,7 +46,7 @@ export default function QuestionRegister() {
             premio
         }
         const respuesta = await Axios.post('/question/crear', question);
-        console.log(respuesta);
+        // console.log(respuesta);
         const mensaje = respuesta.data.mensaje
         if (mensaje !== 'Pregunta almacenada con éxito') {
             Swal.fire({
@@ -65,6 +68,10 @@ export default function QuestionRegister() {
         obtenerCantidadPreguntas()
     }
 
+    const salir = async () => {
+        window.location.href = '/'
+    }
+
     return (
         <div className="container mt-4">
             <div className="row">
@@ -75,7 +82,7 @@ export default function QuestionRegister() {
                             <i className="fas fa-question"></i>
                         </div>
 
-                        <div className="card-header text-center">
+                        <div className="card-header text-center ">
                             <h4>Crear pregunta</h4>
                         </div>
                         <div className="card-body">
@@ -109,25 +116,12 @@ export default function QuestionRegister() {
 
                                 <div className='form-group'>
                                     <label>Categoría</label>
-                                    {/* <input type="number" className='form-control' required onChange={(e) => setCategoria(e.target.value)} /> */}
-                                    <select class="form-control" required onChange={(e) => setCategoria(e.target.value)} id="exampleFormControlSelect1">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+                                    <input type="number" className='form-control' required onChange={(e) => setCategoria(e.target.value)} />
                                 </div>
 
                                 <div className='form-group'>
                                     <label>Respuesta correcta</label>
-                                    {/* <input type="number" className='form-control' required onChange={(e) => setCorrecta(e.target.value)} /> */}
-                                    <select class="form-control" required onChange={(e) => setCorrecta(e.target.value)}>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                    </select>
+                                    <input type="number" className='form-control' required onChange={(e) => setCorrecta(e.target.value)} />
                                 </div>
 
                                 <div className='form-group'>
@@ -138,6 +132,7 @@ export default function QuestionRegister() {
                                 <input type="submit" value="GUARDAR" className='btn btn-primary  btn-block' />
 
                             </form>
+                            <Link type="button" className="btn btn-danger btn-block" onClick={() => salir()} to="/">VOLVER</Link>
 
                         </div>
 

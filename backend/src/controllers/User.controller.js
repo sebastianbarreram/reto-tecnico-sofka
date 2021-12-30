@@ -14,26 +14,12 @@ UserCtrl.crearUsuario = async (req, res) => {
         nombre: NuevoUsuario.nombre,
         puntaje: NuevoUsuario.puntaje,
     })
-
-
 }
 
 
 UserCtrl.listar = async (req, res) => {
-    const respuesta = await User.find()
-    res.json(respuesta)
+    const respuesta = await User.find().sort({puntaje:1})
+    res.json(respuesta.reverse())
 }
-
-
-UserCtrl.listarId = async (req, res) => {
-
-    const id = req.params.id
-    const respuesta = await User.findById({ _id: id })
-
-    res.json(respuesta)
-
-
-}
-
 
 module.exports = UserCtrl

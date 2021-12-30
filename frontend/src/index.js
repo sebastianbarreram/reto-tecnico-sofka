@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import Axios from 'axios';
 
-Axios.defaults.baseURL='http://localhost:4000'
+// Axios.defaults.baseURL='http://localhost:4000'
 
-// Axios.defaults.baseURL='https://backendequipo2p22.herokuapp.com/'
+Axios.defaults.baseURL='https://backend-retosofkau.herokuapp.com/'
 
 
 ReactDOM.render(

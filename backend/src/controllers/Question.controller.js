@@ -47,24 +47,4 @@ QuestionCtrl.preguntaPorCategoria = async (req,res)=>{
     res.json(respuesta)
 }
 
-
-QuestionCtrl.eliminar = async (req, res) => {
-    const id = req.params.id
-    await Question.findByIdAndRemove({ _id: id })
-    res.json({
-        mensaje: 'Pregunta eliminada'
-    })
-}
-
-
-QuestionCtrl.actualizar = async (req, res) => {
-    const id = req.params.id
-    await Question.findByIdAndUpdate({ _id: id }, req.body)
-
-    res.json({
-        mensaje: 'Pregunta actualizada'
-    })
-}
-
-
 module.exports = QuestionCtrl
