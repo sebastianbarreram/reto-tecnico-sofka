@@ -20,8 +20,12 @@ https://backend-retosofkau.herokuapp.com/user/listarUsuarios
 
 ## Frontend Setup
 
-npm install
+$ git clone https://github.com/sebastianbarreram/reto-tecnico-sofka.git
+
+$ cd .\frontend\
+
+$ npm install
 
 ## Frontend Run
 
-npm start
+$ npm start
